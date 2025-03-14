@@ -1,0 +1,23 @@
+.not-icpc:not(.full_view):not(.icpc_view),
+.not-icpc:not(.full_view):not(.icpc_view) td,
+.not-icpc:not(.full_view):not(.icpc_view) code {
+  color: red;
+}
+
+.not-icpc.full_view,
+.not-icpc.full_view td,
+.not-icpc.full_view code {
+}
+
+.not-icpc.icpc_view,
+.not-icpc.icpc_view td,
+.not-icpc.icpc_view code {
+  display: none;
+}
+
+.buttons {
+  width: fit-content;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

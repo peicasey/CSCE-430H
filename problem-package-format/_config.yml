@@ -1,0 +1,21 @@
+title: Problem Package Format
+repository: Kattis/problem-package-format
+lang: en
+description: Problem Package Format Specification
+
+readme_index:
+  with_frontmatter: true
+
+theme: null
+
+# https://github.com/rundocs/jekyll-rtd-theme
+remote_theme: kattis/jekyll-rtd-theme
+
+plugins:
+  - jekyll-remote-theme
+
+markdown: CommonMarkGhPages
+commonmark:
+  # Unsafe allows passthrough of <div class="not-icpc">
+  options: ["SMART", "UNSAFE"]
+  extensions: ["table"]
