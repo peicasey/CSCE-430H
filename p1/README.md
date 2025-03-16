@@ -1,5 +1,5 @@
-# Maximal pass-fail problem
+# Sample pass-fail problem
 
-This is a Problem Package for a pass-fail problem with as many features as possible.
+This is a Problem Package for a sample pass-fail problem.
 
-This problem package uses a custom Output Validator.
+This problem package uses the Default Output Validator.

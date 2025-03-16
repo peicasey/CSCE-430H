@@ -1,27 +1,10 @@
-problem_format_version: 2023-07-draft # or `legacy` for the previous version of the Problem Package Format
+problem_format_version: 2023-07-draft
 type: pass-fail
-name: # May be just a string if there's only a problem statement for one language
-  en: Sample problem
-  sv: Exempel problem
-uuid: b2792508-b645-480a-8357-da047d57a17d
+name: Sample problem
+uuid: 789c94bb-11e7-47f4-bfe6-4988f460f021
 credits:
-  authors:
-    - Author One <author1@judge.com>
-    - Author Two <author2@judge.com>
-  contributors: Contributor <contributor@email.com>
-  testers:
-    - Tester 1
-    - Tester 2 <second@tester.com>
-  translators:
-    sv: Sven Translator <sven@translator.com>
-  acknowledgements: [Inspirational Speaker 1, Inspirational Speaker 2]
+  authors: Author <author@judge.com>
 source: My Contest 2024
 source_url: https://my.contest.com/2024
 license: cc by-sa
 rights_owner: My Contest
-limits: # There are many more limits that can be set...
-  time_limit: 10
-keywords: []
-languages: [python3, cpp]
-constants:
-  example_constant: 1

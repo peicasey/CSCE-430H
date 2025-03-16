@@ -1,1 +1,1 @@
-print('Forty-Two')
+print(input())
