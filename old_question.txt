@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\title{MM's Soccer Ranking System}
+\author{Casey Pei}
+\date{3/16/2025}
+
+\begin{document}
+
+\maketitle
+
+\problemname{MM's Soccer Ranking System}
+
+MM is a huge soccer fan and maintains a list of her favorite players. However, depending on a player's actions, positive or negative, she will want to demote or promote their ranking. Often though, she is indecisive about how much to promote or demote them, even though she knows she wants to rerank them. She has devised a system that allows her to add players to a reranking pool, rerank them based off of the pool, and check the actual ranks of players in an efficient way. Her system supports three operations:
+
+\begin{enumerate}
+    \item \textbf{ADD}. She will add a player to the reranking pool.
+
+    \item \textbf{RERANK}. Whenever she decides to promote or demote a player from the reranking pool, they are then promoted or demoted from their original rank depending on how much she liked them relative to the other players in the reranking pool. The more she likes the player among the players in the reranking group, the more they will be promoted or demoted. A player is demoted \(original\_rank \pm reranking\_pool\_size - reranking\_pool\_rank + 1  \).
+
+    Once a player is reranked, they are then removed from the reranking pool.
+
+    For instance, she will feel like re-ranking her \#1 favorite Messi, her \#2 favorite Alejandro Balde, and her \#4 favorite Tom Thompson. She decides to demote Messi, and since he was her most favorite out of these three, he will be demoted by 3, making Messi's new rank be \#4. Since he moved down, this also makes Alejandro's new rank be \#1 and Tom's be \#3.  Afterwards she will want to promote Thomas, and since he is the 2nd favorite of the remaining 2, his new rank will be 1 more, making his new rank \#2. 
+
+    \item \textbf{CHECK}. She will ask for a player and check what their rank is. 
+    
+    So if after the operations described she checked Alejandro's rank, it would be \#1.
+\end{enumerate}
+
+\section*{Input}
+
+The input consists of the following:
+
+\begin{enumerate}
+    \item The first line contains 2 integers: 
+        \begin{enumerate}
+            \item $n$ ($1 \leq n \leq 10^5$), the number of players in MM's ranking list.
+            \item $k$ ($1 \leq k \leq 10^3$), the number of operations MM will run.
+        \end{enumerate}
+    \item The next $n$ lines contain the names of the players in the order of their original rank (from 1st to $n$th).
+    \item The next $k$ lines contain a sequence of operations. Each operation will be one of the following:
+    \begin{enumerate}
+        \item \textbf{ADD}: This will be in the format:
+        \begin{lstlisting}
+        ADD player_name
+        \end{lstlisting}
+        \item \textbf{RERANK}: This will be in the format: 
+        \begin{lstlisting}
+        RERANK PROMOTE player_name
+        \end{lstlisting} or
+        \begin{lstlisting}
+        RERANK DEMOTE player_name
+        \end{lstlisting}
+        \item \textbf{CHECK}: This will be in the format:
+        \begin{lstlisting}
+        CHECK player_name
+        \end{lstlisting}
+    \end{enumerate}
+\end{enumerate}
+    
+
+\section*{Output}
+
+For each \texttt{CHECK} operation, print the player's current rank after all previous reranking operations.
+
+\section*{Sample Input 1}
+
+\begin{verbatim}
+4 7
+Messi
+Alejandro
+Ralph
+Tom
+ADD Messi
+ADD Alejandro
+ADD Tom
+RERANK DEMOTE Messi 3
+RERANK PROMOTE Tom 1
+CHECK Alejandro
+CHECK Tom
+\end{verbatim}
+
+\section*{Sample Output 1}
+
+\begin{verbatim}
+1
+2
+\end{verbatim}
+
+\section*{Explanation}
+
+Initially, MM adds three players with the following ranks:
+\begin{itemize}
+    \item Messi at rank 1
+    \item Alejandro at rank 2
+    \item Tom at rank 3
+\end{itemize}
+
+After the first \texttt{RERANK DEMOTE Messi 3} operation, Messi is demoted by 3 places, and his new rank is 4. Alejandro and Tom move up to fill the ranks:
+
+\begin{itemize}
+    \item Messi: \#4
+    \item Alejandro: \#1
+    \item Tom: \#3
+\end{itemize}
+
+Then, the \texttt{RERANK PROMOTE Tom 1} operation is executed, which promotes Tom by 1 rank. This results in:
+
+\begin{itemize}
+    \item Messi: \#4
+    \item Alejandro: \#1
+    \item Tom: \#2
+\end{itemize}
+
+Finally, the \texttt{CHECK Alejandro} operation prints the rank of Alejandro, which is \texttt{1}, and the \texttt{CHECK Tom} operation prints the rank of Tom, which is \texttt{2}.
+
+\end{document}

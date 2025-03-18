@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\title{Short Write-up: MM's Soccer Ranking System}
+\author{Casey Pei}
+\date{3/16/2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Short Write-up}
+
+This problem is designed to test the ability to efficiently manage and update ranks in a dynamic system where players can be promoted, demoted, and queried for their current rank. The primary challenge of the problem is to maintain the relative order of players in both their original ranking and the reranking pool. There is also a secondary trick that users need to note about re-adding players to the reranking pool. The solution relies on understanding and applying binary trees, specifically using a balanced binary tree structure to efficiently handle rank adjustments and maintain performance even when there are frequent changes.
+
+The problem involves a soccer fan, MM, who maintains a list of her favorite players. MM can perform three types of operations: adding players to the reanking pool, reranking players (either promoting or demoting them), and checking the current rank of a player. The solution needs to efficiently track these operations, especially when there are frequent promotions or demotions, which can change the relative ranking of players.
+
+To efficiently solve the problem, the solver needs to use a binary search tree-like structure for both the main list and the reranking pool. By using a sorted data structure, the time complexity of each operation (insertion, deletion, and rank queries) remains logarithmic, making the solution efficient even with a large number of players and operations.
+
+The problem solver should use the binary tree structure to implement the operations in this manner.
+
+\subsection{CHECK}
+
+Check is the most straight-forward operation where the problem solver will implement a search through the main list tree for each player based off of their name. This will take $O(log(n))$ time.
+
+\subsection{RERANK}
+
+The most apparent mechanism of the rerank operation is that it requires removal of the player from the reranking pool ($O(log(m))$), removal of the player from their original position in the main list ($O(log(n))$), and insertion of the player back with their new rank ($O(log(n))$).
+
+One of the important things for problem solvers to realize is that even though the reranked player's relative order has been changed to the other players in the reranking pool once it has been reranked, the relative order of the players still in the reranking pool to each other hasn't been. Since reranking a player removes it from the reranking pool, this allows rerank to not require resorting the reranking pool tree.
+
+\subsection{ADD}
+
+
+
+The goal of this problem is to illustrate the use of binary search trees for efficient updates and queries in dynamic systems. It emphasizes understanding how tree-based data structures can maintain order and handle operations that modify the underlying data. The problem is meant to provide practice in working with tree structures, specifically in managing dynamic lists of elements that undergo frequent updates.
+
+
+\end{document}

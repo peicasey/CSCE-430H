@@ -1,2 +1,26 @@
-INT(-1000, 1000) NEWLINE
+# Validate number of players (n) and number of operations (k)
+INT(1, 100000, n)               # n must be between 1 and 100000
+INT(1, 1000, k)                 # k must be between 1 and 1000
+
+# Validate the player names
+REP(n) [
+    STRING(player)              # Each player's name is a string
+    # Ensure no player names are repeated
+    UNIQUE(player)
+]
+
+# Validate the operations
+REP(k) [
+    STRING(playerX)             # playerX is a string (player to compare)
+    REGEX("[><]", operation)    # operation is either '>' or '<'
+    STRING(playerY)             # playerY is a string (player to compare with)
+    
+    # Ensure playerX and playerY are not the same
+    ASSERT(playerX != playerY)
+    
+    # Ensure playerX and playerY exist in the list of players
+    INARRAY(playerX, player)
+    INARRAY(playerY, player)
+]
+
 EOF
