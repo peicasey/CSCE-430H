@@ -1,4 +1,4 @@
-INT(1,100000,n) SPACE INT(1,1000,k) REGEX("(.)")
+INT(1,100000,n) SPACE INT(1,1000,k) NEWLINE
 
 REPI(i, n)
     REGEX("[a-zA-Z_]{3,20}", players[i]) NEWLINE
