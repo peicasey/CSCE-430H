@@ -2,11 +2,14 @@ import random
 import string
 import sys
 
-def generate_player_name():
+def generate_player_name(existing_names):
     allowed_chars = string.ascii_letters + "_"  # A-Z, a-z, _
     name_length = random.randint(3, 20)  # random length between 3 and 15 characters
     
-    return ''.join(random.choice(allowed_chars) for _ in range(name_length))
+    while True:
+        name = ''.join(random.choice(allowed_chars) for _ in range(name_length))
+        if name not in existing_names:
+            return name
 
 def generate_operation(players):
     player_x = random.choice(players)
@@ -15,8 +18,11 @@ def generate_operation(players):
     return f"{player_x} {operation} {player_y}"
 
 def generate_input(n, k):
-    players = [generate_player_name() for _ in range(n)]
-    
+    players = set()
+    for _ in range(n):
+        players.add(generate_player_name(players))
+    players = list(players)
+
     operations = [generate_operation(players) for _ in range(k)]
     
     input_data = []
