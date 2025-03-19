@@ -1,4 +1,6 @@
 accepted/*:
   authors: Casey Pei <peicasey@gmail.com>
+time_limit_exceeded/*:
+  authors: Casey Pei <peicasey@gmail.com>
 wrong_answer/*:
   authors: Casey Pei <peicasey@gmail.com>
