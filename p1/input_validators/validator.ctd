@@ -1,26 +1,16 @@
-# Validate number of players (n) and number of operations (k)
-INT(1, 100000, n)               # n must be between 1 and 100000
-INT(1, 1000, k)                 # k must be between 1 and 1000
+INT(1,100000,n) SPACE INT(1,1000,k) REGEX("(.)")
 
-# Validate the player names
-REP(n) [
-    STRING(player)              # Each player's name is a string
-    # Ensure no player names are repeated
-    UNIQUE(player)
-]
+REPI(i, n)
+    REGEX("[a-zA-Z_]{3,20}", players[i]) NEWLINE
+END
+ASSERT( UNIQUE(players) )
 
-# Validate the operations
-REP(k) [
-    STRING(playerX)             # playerX is a string (player to compare)
-    REGEX("[><]", operation)    # operation is either '>' or '<'
-    STRING(playerY)             # playerY is a string (player to compare with)
+REP(k)
+    REGEX("[a-zA-Z_]{3,20}", playerx) SPACE
+    REGEX("(>|<)", operation) SPACE 
+    REGEX("[a-zA-Z_]{3,20}", playery) NEWLINE 
     
-    # Ensure playerX and playerY are not the same
-    ASSERT(playerX != playerY)
-    
-    # Ensure playerX and playerY exist in the list of players
-    INARRAY(playerX, player)
-    INARRAY(playerY, player)
-]
-
-EOF
+    ASSERT( playerx != playery )
+    ASSERT( INARRAY(playerx, players) )
+    ASSERT( INARRAY(playery, players) )
+END
